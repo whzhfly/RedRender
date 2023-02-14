@@ -5,6 +5,9 @@ project(temple_test VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 20)
 
 
+include_directories(CMAKE_SOURCE_DIR)
+include_directories(CMAKE_SOURCE_DIR/math)
+
 # https://stackoverflow.com/questions/22176957/cmake-finds-more-than-one-main-function
 # file(GLOB_RECURSE HEADERS "./*.hpp")
 # file(GLOB_RECURSE SOURCES "./*.cpp")
@@ -14,6 +17,13 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_BUILD_TYPE "Debug")
 # SET(TARGET_SRC ${HEADERS} ${SOURCES})
+
+
+
+aux_source_directory(./render_system SYSTEM_DIR)
+aux_source_directory(./game GAMES_DIR)
+aux_source_directory(./math MATH_DIR)
+aux_source_directory(./resource RESOURCE_DIR)
 
 message(STATUS "HEADERS ${HEADERS}")
 message(STATUS "SOURCES ${SOURCES}")
@@ -26,8 +36,8 @@ aux_source_directory(. DIR_SRCS)
 add_executable(
 	temple_test
 	${DIR_SRCS}
-	# ${SOURCES}
-	# cmdargs.cpp
-	# cmdargs.hpp # 设置路径 加入include
-	# main.cpp
+	${SYSTEM_DIR}
+	${GAMES_DIR}
+	${MATH_DIR}
+	${RESOURCE_DIR}
 )

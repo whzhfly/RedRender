@@ -2,9 +2,8 @@
 
 
 #include <vector>
-#include "geometry.h"
+#include "../math/math.h"
 
-typedef Vec3f Vector3;
 
 
 // struct PointLight
